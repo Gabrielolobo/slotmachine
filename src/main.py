@@ -21,8 +21,7 @@ def deposit():
 
 def get_number_of_lines():
     while True:
-        lines = input(
-            "Enter the number of line you would like to bet on (1-" + str(MAX_LINES) + ")? ")
+        lines = input("Enter the number of line you would like to bet on (1-" + str(MAX_LINES) + ")? ")
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
@@ -54,8 +53,9 @@ def main():
     balance = deposit()
     lines = get_number_of_lines()
     bet = get_bet()
+    total_bet = bet * lines
 
-    print(balance, lines, bet)
+    print(f"you are betting R${bet} on {lines}line(s). Total bet is: R${total_bet}")
 
 
 main()
