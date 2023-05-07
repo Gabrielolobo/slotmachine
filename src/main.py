@@ -26,8 +26,14 @@ def spin_slot_machine(rows, cols, symbols):
     for col in range(cols):
         column = []
         current_symbols = all_symbols[:]
-        for row in range(rows):
-            value = random.choice(all_symbols)
+        for _ in range(rows):
+            value = random.choice(current_symbols)
+            current_symbols.remove(value)
+            column.append(value)
+
+        columns.append(column)
+
+    return columns
 
 
 def deposit():
