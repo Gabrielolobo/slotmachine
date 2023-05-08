@@ -9,11 +9,32 @@ COLS = 3
 
 # Dictionary
 symbol_count = {
-    "A": 2,
-    "B": 4,
-    "C": 6,
-    "D": 8
+    "$": 3,
+    "&": 4,
+    "@": 6,
+    "#": 8
 }
+
+symbol_value = {
+    "$": 6,
+    "&": 4,
+    "@": 3,
+    "#": 2
+}
+
+
+def check_winnings(columns, lines, bet, values):
+    winnings = 0
+    for line in range(lines):
+        symbol = columns[0][line]
+        for column in columns:
+            symbol_to_check = column[line]
+            if symbol != symbol_to_check:
+                break
+        else:
+            winnings += values[symbol] * bet
+
+    return winnings
 
 
 def spin_slot_machine(rows, cols, symbols):
@@ -113,6 +134,7 @@ def main():
 
     slots = spin_slot_machine(ROWS, COLS, symbol_count)
     print_slot_machine(slots)
+    winnings = check_winnings(slots, lines, bet, symbol_value)
 
 
 main()
